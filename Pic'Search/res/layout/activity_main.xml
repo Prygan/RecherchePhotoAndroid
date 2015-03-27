@@ -4,9 +4,40 @@
     android:layout_height="match_parent"
     tools:context="${packageName}.${activityClass}" >
 
-    <TextView
-        android:layout_width="wrap_content"
+    <TextView 
+        android:id="@+id/presentation"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
-
+        android:layout_alignParentTop="true"
+        android:text="@string/presentation"
+        />
+    
+    <EditText 
+        android:id="@+id/recherche"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/recherche"
+        android:layout_below="@id/presentation"
+        />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/recherche">
+        
+        <Spinner 
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/spinner"
+      android:layout_weight="0.5"
+     />
+  <Button 
+      android:id="@+id/valider"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_weight="0.5"
+      android:text="@string/valider"/>
+        
+        
+    </LinearLayout>
+  
 </RelativeLayout>
