@@ -24,20 +24,25 @@
         android:layout_height="fill_parent"
         android:layout_below="@id/recherche">
         
-        <Spinner 
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:id="@+id/spinner"
-      android:layout_weight="0.5"
-     />
-  <Button 
-      android:id="@+id/valider"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_weight="0.5"
-      android:text="@string/valider"/>
-        
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5" />
+        <Button
+            android:id="@+id/valider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="@string/valider" />
         
     </LinearLayout>
+    
+    <ListView
+            android:id="@+id/listView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/presentation"
+            ></ListView>
   
 </RelativeLayout>
