@@ -3,19 +3,22 @@
 
     <string name="app_name">Pic\'Search</string>
     <string name="valider">Ok</string>
-    <string name="recherche">Recherche..</string>
+    <string name="recherche">Rechercher une image..</string>
     <string name="presentation">Pic\'Search</string>
     
+    <string name="retour">Retour</string>
+
     <string-array name="spinner">
-        <item >2</item>
-        <item >3</item>
-        <item >4</item>
-        <item >5</item>
-        <item >6</item>
-        <item >7</item>
-        <item >8</item>        
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
     </string-array>
-    
-    
+
+    <string name="title_activity_vue_photo">VuePhoto</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

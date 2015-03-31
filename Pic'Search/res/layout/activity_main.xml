@@ -20,8 +20,9 @@
         android:layout_below="@id/presentation"
         />
     <LinearLayout
+        android:id="@+id/linear"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/recherche">
         
         <Spinner
@@ -35,14 +36,17 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:text="@string/valider" />
+       
         
     </LinearLayout>
     
-    <ListView
+     <ListView
             android:id="@+id/listView"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/presentation"
+            android:layout_below="@id/linear"
             ></ListView>
+    
+    
   
 </RelativeLayout>
