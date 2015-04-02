@@ -1,7 +1,5 @@
 package com.example.picsearch;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import org.apache.http.Header;
@@ -13,15 +11,10 @@ import org.json.JSONTokener;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpRequest;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract.Contacts.Data;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.TextureView;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -30,7 +23,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
@@ -74,8 +66,10 @@ public class MainActivity extends Activity {
 							@Override
 							public void onSuccess(int arg0, Header[] arg1, byte[] arg2) {
 								// TODO Auto-generated method stub
-								
+								Toast.makeText(getBaseContext(), "onsuccess", 1).show();
 								String jsonData = new String(arg2);
+								
+								
 								
 								try {
 									JSONObject json = (JSONObject) new JSONTokener(jsonData).nextValue();
@@ -83,14 +77,17 @@ public class MainActivity extends Activity {
 									
 									JSONArray tmp = json.getJSONArray("results");
 									
-									ArrayList<String> listeUrl = new ArrayList<String>();							
-									for (int i = 0; i < tmp.length(); i++) {
+									ArrayList<DataImage> listeUrl = new ArrayList<DataImage>();
+									for(int i=0; i<tmp.length(); i++)
+									{
 										json = (JSONObject) tmp.get(i);
-										listeUrl.add(json.getString("url"));
+										DataImage di = new DataImage(json.getString("url"));										
+										listeUrl.add(di);
 									}
-														
-									ArrayAdapter<String> a = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item, listeUrl);
-									listView.setAdapter(a);
+									
+									AdapterPerso ap = new AdapterPerso(act, listeUrl);
+									listView.setAdapter(ap);
+									
 									
 								} catch (JSONException e) {
 									// TODO Auto-generated catch block
@@ -102,7 +99,7 @@ public class MainActivity extends Activity {
 							@Override
 							public void onFailure(int arg0, Header[] arg1, byte[] arg2, Throwable arg3) {
 								// TODO Auto-generated method stub
-
+								Toast.makeText(getBaseContext(), "tamer", 1).show();
 							}
 						});
 			}
@@ -116,7 +113,7 @@ public class MainActivity extends Activity {
 				// TODO Auto-generated method stub
 				Toast.makeText(getApplicationContext(), "marche", Toast.LENGTH_SHORT).show();
 				Intent intent = new Intent(getApplicationContext(), VuePhoto.class);
-				intent.putExtra(Intent.EXTRA_TEXT, listView.getItemAtPosition(arg2).toString());
+				intent.putExtra(Intent.EXTRA_TEXT, ((DataImage) listView.getAdapter().getItem(arg2)).getURLimg());
 				startActivity(intent);
 				
 			}});

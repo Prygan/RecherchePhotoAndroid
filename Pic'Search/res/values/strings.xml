@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">Pic\'Search</string>
-    <string name="valider">Ok</string>
+    <string name="valider">Valider</string>
     <string name="recherche">Rechercher une image..</string>
     <string name="presentation">Pic\'Search</string>
     
@@ -16,6 +16,12 @@
         <item>6</item>
         <item>7</item>
         <item>8</item>
+    </string-array>
+    
+    <string-array name="spinnerChoix">
+        <item>Définir en tant fond d\'écran</item>
+        <item>Accéder au site internet</item>
+        <item>Se téléporter au KFC le plus proche</item>
     </string-array>
 
     <string name="title_activity_vue_photo">VuePhoto</string>
