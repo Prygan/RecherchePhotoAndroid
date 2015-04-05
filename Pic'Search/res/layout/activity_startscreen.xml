@@ -1,0 +1,36 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    tools:context="${packageName}.${activityClass}" >
+
+	<TextView 
+        android:id="@+id/titre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="@string/titre"
+        android:gravity="center"
+        android:textSize="30sp"
+        />
+	
+	<TextView 
+	    android:id="@+id/presentation_appli"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/presentation_appli"
+        android:layout_below="@id/titre"
+        android:gravity="center"
+	    />
+
+	<Button
+	    android:id="@+id/commencer"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/presentation_appli"
+	    android:layout_centerHorizontal="true"
+	    android:gravity="center"
+	    android:text="@string/commencer" />
+	    
+	</RelativeLayout>

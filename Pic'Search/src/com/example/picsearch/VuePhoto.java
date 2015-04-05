@@ -39,13 +39,19 @@ public class VuePhoto extends Activity {
 		
 		this.boutonRetour.setOnClickListener(new OnClickListener() {
 			
+			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				finish();
 			}
 		});
 		
-		
+		this.boutonValider.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+			}
+		});
 		
 	}
 }

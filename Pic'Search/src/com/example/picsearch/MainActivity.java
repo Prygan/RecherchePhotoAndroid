@@ -69,8 +69,6 @@ public class MainActivity extends Activity {
 								Toast.makeText(getBaseContext(), "onsuccess", 1).show();
 								String jsonData = new String(arg2);
 								
-								
-								
 								try {
 									JSONObject json = (JSONObject) new JSONTokener(jsonData).nextValue();
 									json = json.getJSONObject("responseData");
@@ -99,7 +97,7 @@ public class MainActivity extends Activity {
 							@Override
 							public void onFailure(int arg0, Header[] arg1, byte[] arg2, Throwable arg3) {
 								// TODO Auto-generated method stub
-								Toast.makeText(getBaseContext(), "tamer", 1).show();
+								Toast.makeText(getBaseContext(), "Echec de l'envoit de la requête", 1).show();
 							}
 						});
 			}
@@ -115,7 +113,6 @@ public class MainActivity extends Activity {
 				Intent intent = new Intent(getApplicationContext(), VuePhoto.class);
 				intent.putExtra(Intent.EXTRA_TEXT, ((DataImage) listView.getAdapter().getItem(arg2)).getURLimg());
 				startActivity(intent);
-				
 			}});
 	}
 }
