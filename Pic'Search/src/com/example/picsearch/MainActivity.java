@@ -79,7 +79,7 @@ public class MainActivity extends Activity {
 									for(int i=0; i<tmp.length(); i++)
 									{
 										json = (JSONObject) tmp.get(i);
-										DataImage di = new DataImage(json.getString("url"));										
+										DataImage di = new DataImage(json.getString("url"), json.getString("titleNoFormatting"), json.getString("visibleUrl"));										
 										listeUrl.add(di);
 									}
 									
@@ -97,7 +97,7 @@ public class MainActivity extends Activity {
 							@Override
 							public void onFailure(int arg0, Header[] arg1, byte[] arg2, Throwable arg3) {
 								// TODO Auto-generated method stub
-								Toast.makeText(getBaseContext(), "Echec de l'envoit de la requête", 1).show();
+								Toast.makeText(getBaseContext(), "Echec de l'envoit de la requete", 1).show();
 							}
 						});
 			}
@@ -111,7 +111,9 @@ public class MainActivity extends Activity {
 				// TODO Auto-generated method stub
 				Toast.makeText(getApplicationContext(), "marche", Toast.LENGTH_SHORT).show();
 				Intent intent = new Intent(getApplicationContext(), VuePhoto.class);
-				intent.putExtra(Intent.EXTRA_TEXT, ((DataImage) listView.getAdapter().getItem(arg2)).getURLimg());
+				intent.putExtra("url", ((DataImage) listView.getAdapter().getItem(arg2)).getURLimg());
+				intent.putExtra("urlSite", ((DataImage) listView.getAdapter().getItem(arg2)).getURLsite());
+				intent.putExtra("titre", ((DataImage) listView.getAdapter().getItem(arg2)).getTitre());
 				startActivity(intent);
 			}});
 	}

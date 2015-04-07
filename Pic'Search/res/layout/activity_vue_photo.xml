@@ -13,26 +13,37 @@
         />
     
     <Button
-            android:id="@+id/boutonValider"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:text="@string/valider" />
-
-        <Button
             android:id="@+id/boutonRetour"
+            android:layout_alignParentBottom="true"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/retour" /> 
+    <LinearLayout 
+        android:id="@+id/ln"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_above="@id/boutonRetour">
+        <Button 
+            android:id="@+id/info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:text="@string/retour" />
+            android:layout_weight="0.5"
+            android:text="Information"/>
+        <Button 
+            android:id="@+id/goSite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="Aller sur le site"/>
     
-        <Spinner
-            android:id="@+id/spinnerOption"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" 
-            android:layout_above="@id/boutonRetour"/>
+
+      
+        </LinearLayout>
+        
+        
+    
+        
         
         
         

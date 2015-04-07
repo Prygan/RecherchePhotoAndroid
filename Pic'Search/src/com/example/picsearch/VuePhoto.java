@@ -4,6 +4,7 @@ import com.squareup.picasso.Picasso;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -11,31 +12,54 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class VuePhoto extends Activity {
 	
 	private ImageView img;
 	private Button boutonRetour;
-	private Button boutonValider;
-	private Spinner seymourSpinnerChoix;
+	private Button info;
+	private Button goSite;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_vue_photo);
 		
-		this.boutonValider = (Button)findViewById(R.id.boutonValider);
-		this.boutonRetour = (Button)findViewById(R.id.boutonRetour);
-		this.seymourSpinnerChoix = (Spinner)findViewById(R.id.spinnerOption);
 		
-		ArrayAdapter<CharSequence> aa = ArrayAdapter.createFromResource(this, R.array.spinnerChoix, android.R.layout.simple_spinner_item);
-		aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		this.seymourSpinnerChoix.setAdapter(aa);
+		this.boutonRetour = (Button)findViewById(R.id.boutonRetour);
+		this.info = (Button)findViewById(R.id.info);
+		this.goSite = (Button)findViewById(R.id.goSite);
 		
 		this.img = (ImageView)findViewById(R.id.img);
-		Bundle extras = getIntent().getExtras();
-		Picasso.with(this).load(extras.getString(Intent.EXTRA_TEXT)).into(this.img);
+		String url = getIntent().getStringExtra("url");
 		
+		
+		Picasso.with(this).load(url).into(this.img);
+		
+		/*this.goSite.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				String site = getIntent().getStringExtra("urlSite");
+				Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(site));
+				startActivity(browserIntent);
+				
+			}
+		});*/
+		
+		this.info.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				String titre = getIntent().getStringExtra("titre");
+				String site = getIntent().getStringExtra("urlSite");
+				String strInfo = "URL de site : " + site + "\nTitre de l'image : " + titre;
+				Toast.makeText(getBaseContext(), strInfo, Toast.LENGTH_LONG).show();
+			}
+		});
 		
 		this.boutonRetour.setOnClickListener(new OnClickListener() {
 			
@@ -45,13 +69,7 @@ public class VuePhoto extends Activity {
 			}
 		});
 		
-		this.boutonValider.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				
-			}
-		});
+		
 		
 	}
 }
