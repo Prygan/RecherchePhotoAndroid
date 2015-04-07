@@ -1,5 +1,7 @@
 package com.example.picsearch;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import org.apache.http.Header;
@@ -11,6 +13,7 @@ import org.json.JSONTokener;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpRequest;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -59,7 +62,14 @@ public class MainActivity extends Activity {
 				//TODO
 				AsyncHttpClient client = new AsyncHttpClient();
 				String str = recherche.getText().toString();
-				str.replace("\\s", "%");
+				try {
+					str = URLEncoder.encode(str, "UTF-8");
+				} catch (UnsupportedEncodingException e1) {
+					str = "";
+					Toast.makeText(getApplicationContext(), "Problème au niveau de votre"
+							+ " intitulé de requète", Toast.LENGTH_LONG).show();
+					Log.v("UNSUPPORTED_ENCODING_EXCEPTION",e1.getMessage());
+				}
 				client.get("https://ajax.googleapis.com/ajax/services/search/images?v=1.0&q=" 
 						+ str + "&rsz=" + Integer.parseInt(seymourSpinner.getSelectedItem().toString()), new AsyncHttpResponseHandler() {
 
@@ -90,6 +100,8 @@ public class MainActivity extends Activity {
 								} catch (JSONException e) {
 									// TODO Auto-generated catch block
 									e.printStackTrace();
+									Toast.makeText(getApplicationContext(), "Erreur lors de "
+											+ "la réception des données", Toast.LENGTH_LONG).show();
 									Log.d("marche pas", e.getMessage());
 								}
 							}
@@ -97,7 +109,7 @@ public class MainActivity extends Activity {
 							@Override
 							public void onFailure(int arg0, Header[] arg1, byte[] arg2, Throwable arg3) {
 								// TODO Auto-generated method stub
-								Toast.makeText(getBaseContext(), "Echec de l'envoit de la requête", 1).show();
+								Toast.makeText(getBaseContext(), "Echec de l'envoi de la requête", Toast.LENGTH_LONG).show();
 							}
 						});
 			}
